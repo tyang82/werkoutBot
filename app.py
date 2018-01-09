@@ -19,7 +19,8 @@ def webhook():
     data = request.get_json()
     log('Recieved {}'.format(data))
     # We don't want to reply to ourselves
-    if data['name'] != 'WORKOUT BOT' and data['name'] != 'TEST':
+    if data['name'] != 'WORKOUT BOT' and data['name'] != 'TestBot':
+        send_debug_message("found a msg")
         GYM_POINTS = 1.0
         TRACK_POINTS = 1.0
         THROW_POINTS = 0.5
