@@ -48,7 +48,7 @@ def webhook():
                     (data['user_id'], data['name'],))
                 send_debug_message("gave an id to %s" % data['name'])
             if cursor.rowcount == 0: #Is not present in the database and needs to be added
-                cursor.execute(sql.SQL("INSERT INTO wreck_data VALUES (%s, 1, 0, 0, now()), %s"), (data['name'], data['user_id'],))
+                cursor.execute(sql.SQL("INSERT INTO wreck_data VALUES (%s, 1, 0, 0, now(), %s)"), (data['name'], data['user_id'],))
                 send_debug_message("added %s to the group" % data['name'])
             conn.commit()
             cursor.close()
