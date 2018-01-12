@@ -168,6 +168,7 @@ def handle_workouts(data, addition):
         found_attachment = False  # This will track whether we found an image or not, which is required
         for attachment in data["attachments"]:
             if attachment['type'] == 'image':
+                send_debug_message("got here %s" % str(group_members))
                 found_attachment = True
             if attachment['type'] == 'mentions':  # grab all the people @'d in the post to include them
                 send_debug_message(str(attachment['user_ids']))
