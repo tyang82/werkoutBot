@@ -242,10 +242,12 @@ def log(msg):
 
 
 def get_group_info(group_id):
+    send_debug_message("enter getgroupinfo")
     with urllib.request.urlopen("https://api.groupme.com/v3/groups/%s?token=%s" % (
     group_id, os.getenv("ACCESS_TOKEN"))) as response:
         html = response.read()
     dict = parse_group_for_members(html)
+    send_debug_message("leaving getgroupinfo")
     return dict["response"]["members"]
 
 
