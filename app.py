@@ -93,7 +93,7 @@ def webhook():
         if '!lizzie' in text:
             send_wreck_message("ALL HAIL")
         if '!sloop' in text:
-            send_wreck_message("Sam Loop would s*** d*** for mac and cheese")
+            send_wreck_message("Sam Loop would do many things for mac and cheese")
         if '!ratio' in text: #workout score /num workouts
             try:
                 urllib.parse.uses_netloc.append("postgres")
