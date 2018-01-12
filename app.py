@@ -59,40 +59,40 @@ def webhook():
         if '!website' in text:
             #send the website information to the groupme
             send_wreck_message("https://gtwreck.wordpress.com/about/")
-        elif '!iloveyou' in text:
+        if '!iloveyou' in text:
             #special command for Stephen Mock
             send_wreck_message("I love you too %s <3" % data['name'])
-        elif '!help' in text:
+        if '!help' in text:
             #Special command for Jeffrey Minowa
             send_wreck_message("available commands: !throw, !gym, !swim, !track, !bike, !pickup, !website, !leaderboard, !workouts, !talkative, !points, !ratio, !heatcheck")
         #elif 'ultianalytics' in text:
             #get the ultianalytics password
         #    send_wreck_message("url: http://www.ultianalytics.com/app/#/5629819115012096/login || password: %s" % (os.getenv("ULTI_PASS")))
-        elif '!points' in text:
+        if '!points' in text:
             send_wreck_message("Track - %d, Gym - %d, Throw - %d, Swim - %d, Pickup - %d, Biking - %d" % (TRACK_POINTS, GYM_POINTS, THROW_POINTS, SWIM_POINTS, PICKUP_POINTS, BIKING_POINTS))
-        elif '!gym' in text:
+        if '!gym' in text:
             handle_workouts(data, GYM_POINTS)
-        elif '!throw' in text:
+        if '!throw' in text:
             handle_workouts(data, THROW_POINTS)
-        elif '!swim' in text:
+        if '!swim' in text:
             handle_workouts(data, SWIM_POINTS)
-        elif '!track' in text:
+        if '!track' in text:
             handle_workouts(data, TRACK_POINTS)
-        elif '!bike' in text:
+        if '!bike' in text:
             handle_workouts(data, BIKING_POINTS)
-        elif '!pickup' in text:
+        if '!pickup' in text:
             handle_workouts(data, PICKUP_POINTS)
-        elif '!leaderboard' in text: #post the leaderboard in the groupme
+        if '!leaderboard' in text: #post the leaderboard in the groupme
             print_stats(3, True)
-        elif '!workouts' in text: #display the leaderboard for who works out the most
+        if '!workouts' in text: #display the leaderboard for who works out the most
             print_stats(2, True)
-        elif '!talkative' in text:  # displays the leaderboard for who posts the most
+        if '!talkative' in text:  # displays the leaderboard for who posts the most
             print_stats(1, True)
-        elif '!heatcheck' in text:
+        if '!heatcheck' in text:
             send_wreck_message("Kenta wins")
-        elif '!stackbread' in text:
+        if '!stackbread' in text:
             send_wreck_message("This is dumb.")
-        elif '!ratio' in text:
+        if '!ratio' in text:
             try:
                 urllib.parse.uses_netloc.append("postgres")
                 url = urllib.parse.urlparse(os.environ["DATABASE_URL"])
