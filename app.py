@@ -64,7 +64,7 @@ def webhook():
             send_wreck_message("I love you too %s <3" % data['name'])
         if '!help' in text:
             #Special command for Jeffrey Minowa
-            send_wreck_message("available commands: !throw, !gym, !swim, !track, !bike, !pickup, !website, !leaderboard, !workouts, !talkative, !points, !ratio, !heatcheck")
+            send_wreck_message("available commands: !throw, !gym, !swim, !track, !bike, !pickup, !website, !leaderboard, !workouts, !talkative, !points, !ratio, !heatcheck, !lizzie")
         #elif 'ultianalytics' in text:
             #get the ultianalytics password
         #    send_wreck_message("url: http://www.ultianalytics.com/app/#/5629819115012096/login || password: %s" % (os.getenv("ULTI_PASS")))
@@ -89,10 +89,12 @@ def webhook():
         if '!talkative' in text:  # displays the leaderboard for who posts the most
             print_stats(1, True)
         if '!heatcheck' in text:
-            send_wreck_message("Kenta wins")
-        if '!stackbread' in text:
-            send_wreck_message("This is dumb.")
-        if '!ratio' in text:
+            send_wreck_message("%s was not born in a PAPA Johns" % data['name'])
+        if '!lizzie' in text:
+            send_wreck_message("ALL HAIL")
+        if '!sloop' in text:
+            send_wreck_message("I would s*** d*** for mac and cheese")
+        if '!ratio' in text: #workout score /num workouts
             try:
                 urllib.parse.uses_netloc.append("postgres")
                 url = urllib.parse.urlparse(os.environ["DATABASE_URL"])
