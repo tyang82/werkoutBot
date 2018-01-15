@@ -64,7 +64,7 @@ def webhook():
             send_wreck_message("I love you too %s <3" % data['name'])
         if '!help' in text:
             #Special command for Jeffrey Minowa
-            send_wreck_message("available commands: !throw, !gym, !swim, !track, !bike, !pickup, !website, !leaderboard, !workouts, !talkative, !points, !ratio, !heatcheck, !lizzie")
+            send_wreck_message("available commands: !throw, !gym, !swim, !track, !bike, !pickup, !website, !leaderboard, !workouts, !talkative, !points, !ratio, !heatcheck, !lizard")
         #elif 'ultianalytics' in text:
             #get the ultianalytics password
         #    send_wreck_message("url: http://www.ultianalytics.com/app/#/5629819115012096/login || password: %s" % (os.getenv("ULTI_PASS")))
@@ -90,7 +90,7 @@ def webhook():
             print_stats(1, True)
         if '!heatcheck' in text:
             send_wreck_message("%s was not born in a PAPA Johns" % data['name'])
-        if '!lizzie' in text:
+        if '!lizard' in text:
             send_wreck_message("ALL HAIL")
         if '!sloop' in text:
             send_wreck_message("Sam Loop would do many things for mac and cheese")
