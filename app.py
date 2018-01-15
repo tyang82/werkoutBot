@@ -21,11 +21,11 @@ def webhook():
     # We don't want to reply to ourselves
     if data['name'] != 'WORKOUT BOT' and data['name'] != 'TestBot':
         GYM_POINTS = 1.0
-        TRACK_POINTS = 1.0
+        TRACK_POINTS = 1.5
         THROW_POINTS = 0.5
         SWIM_POINTS = 1.0
         PICKUP_POINTS = 0.5
-        BIKING_POINTS = 1.0
+        BIKING_POINTS = .75
         try:
             #set up connection to the database
             urllib.parse.uses_netloc.append("postgres")
