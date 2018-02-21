@@ -281,7 +281,7 @@ def add_to_db(names, addition, ids, task): #add "addition" to each of the "names
                 (str(addition), ids[x],))
             cursor.execute(sql.SQL(
                 "UPDATE wreck_data SET  %s = %s+%s, last_post = now() WHERE id = %s"),
-                (task, task,str(1), ids[x],))
+                (str(task), str(task),str(1), ids[x],))
 
             if cursor.rowcount == 0: #If a user does not have an id yet
                 cursor.execute(sql.SQL(
