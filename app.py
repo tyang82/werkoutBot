@@ -64,12 +64,12 @@ def webhook():
             send_wreck_message("I love you too %s <3" % data['name'])
         if '!help' in text:
             #Special command for Jeffrey Minowa
-            send_wreck_message("available commands: !throw, !gym, !swim, !track, !bike, !pickup, !website, !leaderboard, !workouts, !talkative, !points, !ratio, !heatcheck, !lizard")
+            send_wreck_message("available commands: !throw, !gym, !swim, !track, !bike, !pickup, !website, !leaderboard, !workouts,!points, !ratio, !heatcheck, !lizard")
         #elif 'ultianalytics' in text:
             #get the ultianalytics password
         #    send_wreck_message("url: http://www.ultianalytics.com/app/#/5629819115012096/login || password: %s" % (os.getenv("ULTI_PASS")))
         if '!points' in text:
-            send_wreck_message("Track - %d, Gym - %d, Throw - %d, Swim - %d, Pickup - %d, Biking - %d" % (TRACK_POINTS, GYM_POINTS, THROW_POINTS, SWIM_POINTS, PICKUP_POINTS, BIKING_POINTS))
+            send_wreck_message("Track - %f, Gym - %f, Throw - %f, Swim - %f, Pickup - %f, Biking - %f" % (TRACK_POINTS, GYM_POINTS, THROW_POINTS, SWIM_POINTS, PICKUP_POINTS, BIKING_POINTS))
         if '!gym' in text:
             handle_workouts(data, GYM_POINTS)
         if '!throw' in text:
@@ -86,8 +86,6 @@ def webhook():
             print_stats(3, True)
         if '!workouts' in text: #display the leaderboard for who works out the most
             print_stats(2, True)
-        if '!talkative' in text:  # displays the leaderboard for who posts the most
-            print_stats(1, True)
         if '!heatcheck' in text:
             send_wreck_message("%s was not born in a PAPA Johns" % data['name'])
         if '!lizard' in text:
