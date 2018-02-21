@@ -71,17 +71,17 @@ def webhook():
         if '!points' in text:
             send_wreck_message("Track - %.1f, Gym - %.1f, Throw - %.1f, Swim - %.1f, Pickup - %.1f, Biking - %.1f" % (TRACK_POINTS, GYM_POINTS, THROW_POINTS, SWIM_POINTS, PICKUP_POINTS, BIKING_POINTS))
         if '!gym' in text:
-            handle_workouts(data, GYM_POINTS, 'gym')
+            handle_workouts(data, GYM_POINTS, "gym")
         if '!throw' in text:
-            handle_workouts(data, THROW_POINTS, 'throws')
+            handle_workouts(data, THROW_POINTS, "throws")
         if '!swim' in text:
-            handle_workouts(data, SWIM_POINTS, 'swim')
+            handle_workouts(data, SWIM_POINTS, "swim")
         if '!track' in text:
-            handle_workouts(data, TRACK_POINTS, 'track')
+            handle_workouts(data, TRACK_POINTS, "track")
         if '!bike' in text:
-            handle_workouts(data, BIKING_POINTS, 'bike')
+            handle_workouts(data, BIKING_POINTS, "bike")
         if '!pickup' in text:
-            handle_workouts(data, PICKUP_POINTS, 'pickup')
+            handle_workouts(data, PICKUP_POINTS, "pickup")
         if '!leaderboard' in text: #display the leaderboard for who works out the most
             print_stats(2, True)
         if '!heatcheck' in text:
@@ -281,7 +281,7 @@ def add_to_db(names, addition, ids, task): #add "addition" to each of the "names
                 (str(addition), ids[x],))
             cursor.execute(sql.SQL(
                 "UPDATE wreck_data SET  %s = %s+%s, last_post = now() WHERE id = %s"),
-                (str(task), str(task),str(1), ids[x],))
+                (task, task,str(1), ids[x],))
 
             if cursor.rowcount == 0: #If a user does not have an id yet
                 cursor.execute(sql.SQL(
