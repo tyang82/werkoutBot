@@ -279,7 +279,7 @@ def add_to_db(names, addition, ids, task): #add "addition" to each of the "names
             cursor.execute(sql.SQL(
                 "UPDATE wreck_data SET num_workouts = num_workouts+1, workout_score = workout_score+%s, last_post = now() WHERE id = %s"),
                 (str(addition), ids[x],))
-            queryVar = 
+       
             cursor.execute(sql.SQL(
                 "UPDATE wreck_data SET " + task +"=" +task+"+%s WHERE id = %s"),
                 (str(1), ids[x],))
