@@ -64,7 +64,7 @@ def webhook():
             send_wreck_message("I love you too %s <3" % data['name'])
         if '!help' in text:
             #Special command for Jeffrey Minowa
-            send_wreck_message("available commands: !throw, !gym, !swim, !track, !bike, !pickup, !website, !leaderboard, !workouts,!points, !ratio, !heatcheck, !lizard")
+            send_wreck_message("available commands: !throw, !gym, !swim, !track, !bike, !pickup, !website, !leaderboard, !points, !ratio, !heatcheck, !lizard")
         #elif 'ultianalytics' in text:
             #get the ultianalytics password
         #    send_wreck_message("url: http://www.ultianalytics.com/app/#/5629819115012096/login || password: %s" % (os.getenv("ULTI_PASS")))
@@ -82,9 +82,7 @@ def webhook():
             handle_workouts(data, BIKING_POINTS)
         if '!pickup' in text:
             handle_workouts(data, PICKUP_POINTS)
-        if '!leaderboard' in text: #post the leaderboard in the groupme
-            print_stats(3, True)
-        if '!workouts' in text: #display the leaderboard for who works out the most
+        if '!leaderboard' in text: #display the leaderboard for who works out the most
             print_stats(2, True)
         if '!heatcheck' in text:
             send_wreck_message("%s was not born in a PAPA Johns" % data['name'])
