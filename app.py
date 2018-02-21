@@ -84,6 +84,8 @@ def webhook():
             handle_workouts(data, PICKUP_POINTS, "pickup")
         if '!leaderboard' in text: #display the leaderboard for who works out the most
             print_stats(2, True)
+        if '!throwMaster' in text:
+            print_throws(2,True)
         if '!heatcheck' in text:
             send_wreck_message("%s was not born in a PAPA Johns" % data['name'])
         if '!lizard' in text:
@@ -214,6 +216,37 @@ def print_stats(datafield, rev):
         send_debug_message(error)
 
 
+def print_throws(datafield, rev):
+    try:
+        urllib.parse.uses_netloc.append("postgres")
+        url = urllib.parse.urlparse(os.environ["DATABASE_URL"])
+        conn = psycopg2.connect(
+            database=url.path[1:],
+            user=url.username,
+            password=url.password,
+            host=url.hostname,
+            port=url.port
+        )
+        cursor = conn.cursor()
+        # get all of the people who's workout scores are greater than -1 (any non players have a workout score of -1)
+        cursor.execute(sql.SQL(
+            "SELECT * FROM wreck_data WHERE throws > -1.0"), )
+        leaderboard = cursor.fetchall()
+        leaderboard.sort(key=lambda s: s[datafield], reverse=rev)  # sort the leaderboard by score descending
+        string1 = "Top 15:\n"
+        string2 = "Everyone Else:\n"
+        for x in range(0, 15):
+            string1 += '%d) %s with %.1f points \n' % (x + 1, leaderboard[x][0], leaderboard[x][datafield])
+        for x in range(15, len(leaderboard)):
+            string2 += '%d) %s with %.1f points \n' % (x + 1, leaderboard[x][0], leaderboard[x][datafield])
+        send_wreck_message(string1)  # need to split it up into 2 because groupme has a max message length for bots
+        send_wreck_message(string2)
+        cursor.close()
+        conn.close()
+    except (Exception, psycopg2.DatabaseError) as error:
+        send_debug_message(error)
+
+
 def send_message(msg, bot_ID):
     url = 'https://api.groupme.com/v3/bots/post'
 
@@ -279,7 +312,7 @@ def add_to_db(names, addition, ids, task): #add "addition" to each of the "names
             cursor.execute(sql.SQL(
                 "UPDATE wreck_data SET num_workouts = num_workouts+1, workout_score = workout_score+%s, last_post = now() WHERE id = %s"),
                 (str(addition), ids[x],))
-       
+
             cursor.execute(sql.SQL(
                 "UPDATE wreck_data SET " + task +"=" +task+"+%s WHERE id = %s"),
                 (str(1), ids[x],))
